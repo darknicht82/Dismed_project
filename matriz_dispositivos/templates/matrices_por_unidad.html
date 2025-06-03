@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Matrices para {{ unidad.nombre_unidad }}
+{% endblock %}
+
+{% block content %}
+  <h2>{{ unidad.nombre_unidad }}</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle mb-0 bg-white">
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="32"></th>
+          <th colspan="3" style="background-color: #FFD966;" class="text-center align-middle">CRITERIOS DE ANÁLISIS PREVIO AL PLAN DE COMPRA</th>
+          <th colspan="6" style="background-color: #FFD966;" class="text-center align-middle">CRONOGRAMA DE ADQUISICIONES</th>
+          <th style="background-color: #8497B0;" class="text-center align-middle">EJECUCIÓN PRESUPUESTARIA</th>
+          <th>&nbsp;</th>
+        </tr>
+        <tr>
+          <th colspan="12"></th>
+          <th colspan="6" style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">NIVEL DE ATENCIÓN</th>
+          <th colspan="5">&nbsp;</th>
+          <th colspan="2" style="background-color: #FFC7CE;" class="text-center align-middle">CANTIDAD EN PROCESO DE ADQUISICIÓN (ADJUDICADO)</th>
+          <th colspan="2">&nbsp;</th>
+          <th colspan="3" style="background-color: #FFFF00;" class="text-center align-middle">REQUERIMIENTO PARA PROGRAMACIÓN</th>
+          <th colspan="2">&nbsp;</th>
+          <th rowspan="2" style="background-color: #FFE699;" class="text-center align-middle">Disponibilidad de Dispositivo Médico</th>
+          <th rowspan="2" style="background-color: #FFE699;" class="text-center align-middle">Nivel de Abastecimiento</th>
+          <th rowspan="2" style="background-color: #FFE699;" class="text-center align-middle">Tipo de Procedimiento de Contratación Pública</th>
+          <th colspan="2" style="background-color: #FFF2CC;" class="text-center align-middle">
+            Primer Cuatrimestre<br />
+            (entre Enero - Abril)
+          </th>
+          <th colspan="2" style="background-color: #FFF2CC;" class="text-center align-middle">
+            Segundo Cuatrimestre<br />
+            (entre Mayo - Agosto)
+          </th>
+          <th colspan="2" style="background-color: #FFF2CC;" class="text-center align-middle">
+            Tercer Cuatrimestre<br />
+            ( entre Septiembre - Diciembre)
+          </th>
+          <th rowspan="2" style="background-color: #8497B0;" class="text-center align-middle">Priorización</th>
+          <th rowspan="2" style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Observaciones</th>
+        </tr>
+        <tr>
+          <th class="bgstickhead" style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Acción</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">N° ítem</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Nombre Subcomité</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">N° Partida Presupuestaria</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Nombre Partida Presupuestaria</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">CUDIM de referencia</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Código IESS</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Código AS400</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Nombre Genérico</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Especificación Técnica</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Presentación Unidad de Medida</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Nivel de Riesgo Sugerido</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">IA</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">IB</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">IC</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">II</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">III</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">APH</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Especialidad/Subespecialidad</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Consumo Promedio Proyectado(CPP)</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Periodicidad de Consumo(PC)</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Saldo en Bodega Actual(SBA)</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Proyección de Saldo</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Cantidad Pendiente de Entrega(CPE)</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Código de Proceso</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Requerimiento Total Proyectado(RTP)</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Stock de Seguridad(SS)</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Cantidad a Programar Inicialmente(CPI)</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Cantidad de Devolución por Préstamo(CDP)</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Cantidad Final a Requerir(CFR)</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Precio Unitario Referencial(PUR)</th>
+          <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Precio Referencial Total(PRT)</th>
+          <th style="background-color: #FFF2CC;" class="text-center align-middle">Cantidad</th>
+          <th style="background-color: #FFF2CC;" class="text-center align-middle">Monto</th>
+          <th style="background-color: #FFF2CC;" class="text-center align-middle">Cantidad</th>
+          <th style="background-color: #FFF2CC;" class="text-center align-middle">Monto</th>
+          <th style="background-color: #FFF2CC;" class="text-center align-middle">Cantidad</th>
+          <th style="background-color: #FFF2CC;" class="text-center align-middle">Monto</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for matriz in matrices %}
+          <tr>
+            <td class="text-center align-middle sticky-col">
+              <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark" href="#" data-mdb-toggle="modal" data-mdb-target="#Modal{{ matriz.id }}"><i class="fa fa-pencil"></i></button>
+            </td>
+            <td class="text-center align-middle">{{ matriz.item_nro }}</td>
+            <td class="align-middle cell220">{{ matriz.nom_subcomite }}</td>
+            <td class="text-center align-middle">{{ matriz.nro_partida_pres }}</td>
+            <td class="align-middle cell260">{{ matriz.nom_partida_pres }}</td>
+            <td class="text-center align-middle cell200">{{ matriz.cudim }}</td>
+            <td class="text-center align-middle cell120">{{ matriz.cod_iess }}</td>
+            <td class="text-center align-middle">{{ matriz.cod_as400 }}</td>
+            <td class="align-middle cell220">{{ matriz.nom_generico }}</td>
+            <td class="especTecCell align-middle cell310">
+              <span class="text-content truncate">{{ matriz.espec_tec }}</span>
+              <a href="#" class="toggleText btn btn-info btn-rounded btn-sm">Leer más</a>
+            </td>
+            <td class="text-center align-middle">{{ matriz.pres_unimed }}</td>
+            <td class="text-center align-middle">{{ matriz.lvl_riesgo_suger }}</td>
+            <td class="text-center align-middle">{{ matriz.lvl_aten_ia }}</td>
+            <td class="text-center align-middle">{{ matriz.lvl_aten_ib }}</td>
+            <td class="text-center align-middle">{{ matriz.lvl_aten_ic }}</td>
+            <td class="text-center align-middle">{{ matriz.lvl_aten_ii }}</td>
+            <td class="text-center align-middle">{{ matriz.lvl_aten_iii }}</td>
+            <td class="text-center align-middle">{{ matriz.lvl_aten_aph }}</td>
+            <td class="text-center align-middle">{{ matriz.espec_subespec }}</td>
+            <td class="text-center align-middle">{{ matriz.consumo_prom_proyec }}</td>
+            <td class="text-center align-middle">{{ matriz.perioci_consumo }}</td>
+            <td class="text-center align-middle">{{ matriz.saldo_bodega_actual }}</td>
+            <td class="text-center align-middle">{{ matriz.proyecc_saldo }}</td>
+            <td class="text-center align-middle">{{ matriz.cant_pend_entre }}</td>
+            <td class="text-center align-middle cell220">{{ matriz.cod_proceso }}</td>
+            <td class="text-center align-middle">{{ matriz.req_total_proyectado }}</td>
+            <td class="text-center align-middle">{{ matriz.stock_seguridad }}</td>
+            <td class="text-center align-middle">{{ matriz.cant_program_inicial }}</td>
+            <td class="text-center align-middle">{{ matriz.cant_devol_prestam }}</td>
+            <td class="text-center align-middle">{{ matriz.cant_final_required }}</td>
+            <td class="text-center align-middle">{{ matriz.prec_unit_ref }}</td>
+            <td class="text-center align-middle">{{ matriz.pres_ref_total }}</td>
+            <td class="text-center align-middle">{{ matriz.dispo_dm }}</td>
+            <td class="text-center align-middle">{{ matriz.lvl_abastec }}</td>
+            <td class="text-center align-middle cell220">{{ matriz.tip_proc_cp }}</td>
+            <td class="text-center align-middle">{{ matriz.prim_cuatri_cant }}</td>
+            <td class="text-center align-middle">{{ matriz.prim_cuatri_mont }}</td>
+            <td class="text-center align-middle">{{ matriz.seg_cuatri_cant }}</td>
+            <td class="text-center align-middle">{{ matriz.seg_cuatri_mont }}</td>
+            <td class="text-center align-middle">{{ matriz.terc_cuatri_cant }}</td>
+            <td class="text-center align-middle">{{ matriz.terc_cuatri_mont }}</td>
+            <td class="align-middle">{{ matriz.priorizacion }}</td>
+            <td class="align-middle">{{ matriz.observaciones }}</td>
+          </tr>
+
+          <!-- Modal para editar matriz -->
+          <div class="modal fade" id="Modal{{ matriz.id }}" tabindex="-1" aria-labelledby="ModalLabel{{ matriz.id }}" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Editar Matriz</h5>
+                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Aquí puedes añadir campos de formulario para cada uno de los atributos de la matriz -->
+                  <!--       Por ejemplo:
+                  <div class="mb-3">
+                    <label for="item_nro" class="form-label">Número de ítem</label>
+                    <input type="text" class="form-control" id="item_nro" value="{{ matriz.item_nro }}">
+                  </div>
+                        -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary">Guardar cambios</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

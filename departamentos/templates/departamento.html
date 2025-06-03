@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Departamento</h1>
+  <p>ID Departamento: {{ departamento.iddepto }}</p>
+  <p>Nombre Departamento: {{ departamento.nombredept }}</p>
+  <a href="{% url 'departamentos' %}">Volver</a>
+{% endblock %}

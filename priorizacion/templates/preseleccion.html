@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Preselección de Dispositivos Médicos</h1>
+  {% if messages %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  </div>
+{% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination pg-blue">
+          {% if dispositivos.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page=1" aria-label="Primero"><span aria-hidden="true">&laquo;&laquo;</span></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ dispositivos.previous_page_number }}" aria-label="Anterior"><span aria-hidden="true">&laquo;</span></a>
+            </li>
+          {% endif %}
+    
+          <li class="page-item disabled">
+            <span class="page-link">Página {{ dispositivos.number }} de {{ dispositivos.paginator.num_pages }}</span>
+          </li>
+    
+          {% if dispositivos.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ dispositivos.next_page_number }}" aria-label="Siguiente"><span aria-hidden="true">&raquo;</span></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ dispositivos.paginator.num_pages }}" aria-label="Último"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+
+    <button type="submit" class="btn btn-primary">Siguiente</button>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+            <tr>
+                <th colspan="8"></th>
+                <th colspan="6" style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">NIVEL DE ATENCIÓN</th>
+            </tr>
+            <tr>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Seleccionar</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">N° Item</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Código BES</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Código AS400</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Nombre Genérico</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Especificación Técnica</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Presentación Unidad de Medida</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">Nivel de Riesgo Sugerido</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">IA</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">IB</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">IC</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">II</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">III</th>
+                <th style="background-color: #5B9BD5; color: #fff;" class="text-center align-middle">APH</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for dispositivo in dispositivos %}
+            <tr>
+              <td class="text-center align-middle cell120"><input type="checkbox" name="seleccionados" value="{{ dispositivo.id }}"></td>
+              <td class="text-center align-middle">{{ dispositivo.item_nro }}</td>
+              <td class="text-center align-middle cell145">{{ dispositivo.cudim }}</td>
+              <td class="text-center align-middle">{{ dispositivo.cod_as400 }}</td>
+              <td class="align-middle cell220">{{ dispositivo.nom_generico }}</td>
+              <td class="especTecCell align-middle cell270">
+                <span class="text-content truncate">{{ dispositivo.espec_tec }}</span>
+                <a href="#" class="toggleText btn btn-info btn-rounded btn-sm">Leer más</a>
+              </td>
+              <td class="text-center align-middle">{{ dispositivo.pres_unimed }}</td>
+              <td class="text-center align-middle">{{ dispositivo.lvl_riesgo_suger }}</td>
+              <td class="text-center align-middle">{{ dispositivo.lvl_aten_ia }}</td>
+              <td class="text-center align-middle">{{ dispositivo.lvl_aten_ib }}</td>
+              <td class="text-center align-middle">{{ dispositivo.lvl_aten_ic }}</td>
+              <td class="text-center align-middle">{{ dispositivo.lvl_aten_ii }}</td>
+              <td class="text-center align-middle">{{ dispositivo.lvl_aten_iii }}</td>
+              <td class="text-center align-middle">{{ dispositivo.lvl_aten_aph }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Siguiente</button>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination pg-blue">
+          {% if dispositivos.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page=1" aria-label="Primero"><span aria-hidden="true">&laquo;&laquo;</span></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ dispositivos.previous_page_number }}" aria-label="Anterior"><span aria-hidden="true">&laquo;</span></a>
+            </li>
+          {% endif %}
+    
+          <li class="page-item disabled">
+            <span class="page-link">Página {{ dispositivos.number }} de {{ dispositivos.paginator.num_pages }}</span>
+          </li>
+    
+          {% if dispositivos.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ dispositivos.next_page_number }}" aria-label="Siguiente"><span aria-hidden="true">&raquo;</span></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ dispositivos.paginator.num_pages }}" aria-label="Último"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+  </form>
+{% endblock %}

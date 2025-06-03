@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Registros de Importación</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Versión</th>
+                <th>Unidad Médica</th> <!-- Columna añadida para mostrar la Unidad Médica -->
+                <th>Archivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros %}
+            <tr>
+                <td>{{ registro.fecha_importacion }}</td>
+                <td>{{ registro.usuario.username }}</td>  <!-- Asumiendo que 'usuario' es una instancia del modelo User de Django -->
+                <td>{{ registro.version }}</td>
+                <td>{{ registro.unidad_medica.nombre_unidad }}</td>  <!-- Asumiendo que el modelo UnidadMedica tiene un campo 'nombre' -->
+                <td><a href="{{ registro.archivo_importado.url }}" target="_blank">Descargar</a></td>  <!-- Link para descargar el archivo, si lo guardaste -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

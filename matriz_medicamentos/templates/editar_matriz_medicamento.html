@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Editar Matriz Medicamentos
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+  <h2>Editar Matriz Medicamentos - {{ matriz.udm_id.nombre_unidad }}</h2>
+  
+  <form method="post" action="{% url 'editar_matriz_dispositivo_view' matriz.id %}">
+    {% csrf_token %}
+    <!-- Aquí añadirás todos los campos de la matriz como elementos de formulario (input, select, etc.) -->
+    <!-- Por ejemplo: -->
+    <label for="nom_subcomite">Nom Subcomite:</label>
+    <input type="text" id="nom_subcomite" name="nom_subcomite" value="{{ matriz.nom_subcomite }}">
+    <!-- Repite para cada campo -->
+    
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+  </form>
+
+  <a href="{% url 'mostrar_matriz_medicamento' matriz.id %}" class="btn btn-secondary">Volver</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "dismed_project",
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.tabCompletion": "on",
+		"diffEditor.codeLens": true,
+		"[python]": {
+			"editor.defaultFormatter": "ms-python.black-formatter"
+		},
+		"python.formatting.provider": "none"
+	}
+}

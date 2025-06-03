@@ -1,0 +1,16 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Evita la barra de desplazamiento */
+  }
+  
+  .vh-100 {
+    min-height: 100vh; /* Altura mínima del 100% de la ventana gráfica */
+  }
+  
+  .h-custom {
+    display: flex; /* Habilita Flexbox */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: center; /* Centra los elementos horizontalmente */
+  }
+  

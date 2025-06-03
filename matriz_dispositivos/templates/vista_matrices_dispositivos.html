@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Vista de Matrices Dispositivos
+{% endblock %}
+
+{% block head %}
+  <!-- Agregar estilos bootstrap o cualquier otra hoja de estilos que necesites -->
+{% endblock %}
+
+{% block content %}
+  <h2>Matrices Dispositivos</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle mb-0 bg-white">
+      <thead class="thead-dark">
+        <tr>
+          <th>Unidad Médica</th>
+          <th>Responsable</th>
+          <th>Fecha de actualización</th>
+          <th>Versión</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for unidad in unidades_medicas %}
+          <tr>
+            <td><a href="{% url 'mostrar_matriz_por_unidad' unidad.idudm %}">{{ unidad.nombre_unidad }}</a></td>
+            <td>{{ unidad.user_modify }}</td> <!-- Asumiendo que tienes un campo llamado 'nombre_responsable' en 'unidad'. De lo contrario, deberás cambiar este nombre por el correcto. -->
+            <td>{{ unidad.modify_time }}</td> <!-- Asumiendo que tienes un campo llamado 'fecha_actualizacion' en 'unidad'. De lo contrario, deberás cambiar este nombre por el correcto. -->
+            <td>{{ unidad.ultima_version }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

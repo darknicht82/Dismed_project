@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'head.html' %}
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    <main style="margin-top: 58px">
+      <div class="container pt-4">
+        {% block content %}
+
+        {% endblock %}
+      </div>
+    </main>
+
+    {% block scripts %}
+
+    {% endblock %}
+    {% include 'footer.html' %}
+  </body>
+</html>

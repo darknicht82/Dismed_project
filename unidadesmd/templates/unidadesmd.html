@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Unidades Médicas</h1>
+ 
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Código de la Unidad</th>
+          <th>Nombre de la Unidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for unidadmd in unidadesmd %}
+          <tr>
+            <td>{{ unidadmd.uni_codigo }}</td>
+            <td>{{ unidadmd.nombre_unidad }}</td>
+            <td>
+              <a href="{% url 'editar_unidadmd_view' idudm=unidadmd.idudm %}" class="btn btn-info">Editar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

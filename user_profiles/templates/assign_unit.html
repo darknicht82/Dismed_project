@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Asignar Unidad Médica y Grupo</h1>
+
+<form action="{% url 'assign_unit' %}" method="POST">
+    {% csrf_token %}
+    {{ select_user_form }}
+    <button type="submit" class="btn btn-secondary">Seleccionar</button>
+</form>
+
+{% if current_group or current_unit %}
+<div class="current-info">
+    <h3>Información Actual</h3>
+    {% if current_group %}
+    <p><strong>Grupo:</strong> {{ current_group.name }}</p>
+    {% endif %}
+    {% if current_unit %}
+    <p><strong>Unidad Médica:</strong> {{ current_unit.nombre_unidad }}</p>
+    {% endif %}
+</div>
+{% endif %}
+
+{% if assign_unit_form %}
+<form action="{% url 'assign_unit' %}" method="POST">
+    {% csrf_token %}
+    {{ assign_unit_form }}
+    <button type="submit" class="btn btn-primary" name="assign_unit">Asignar</button>
+</form>
+{% endif %}
+
+<!-- Mostrar mensajes de éxito -->
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

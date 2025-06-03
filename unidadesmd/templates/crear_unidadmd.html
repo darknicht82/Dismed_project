@@ -1,0 +1,10 @@
+<!-- templates/unidadesmd/crear_unidadmd.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Crear Unidad Médica</h1>
+  <form action="{{ url_for('unidadesmd.crear_unidadmd') }}" method="post">
+    <!-- Agrega los campos del formulario aquí -->
+    <button type="submit">Guardar</button>
+  </form>
+{% endblock %}

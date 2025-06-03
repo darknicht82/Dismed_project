@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Vista de Matrices Medicamentos
+{% endblock %}
+
+{% block head %}
+  <!-- Agregar estilos bootstrap o cualquier otra hoja de estilos que necesites -->
+{% endblock %}
+
+{% block content %}
+  <h2>Matrices Medicamentos</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre Unidad</th>
+          <th>Versión</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for matriz in matrices %}
+          <tr>
+            <td>{{ matriz.unidad_medica.nombre_unidad }}</td> <!-- Asumiendo que UnidadMedica tiene un campo nombre_unidad -->
+            <td>{{ matriz.version }}</td>
+            <td>
+              <a href="{% url 'mostrar_matriz_medicamento' matriz.id %}" class="btn btn-primary btn-sm">Ver detalles</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

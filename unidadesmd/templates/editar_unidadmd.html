@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Editar Unidad Médica</h1>
+  <h2>{{ unidadmd.nombre_unidad }}</h2>
+  <form action="{{ editar_url }}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="uni_codigo">Código de la Unidad:</label>
+      <input type="text" class="form-control" id="uni_codigo" name="uni_codigo" value="{{ unidadmd.uni_codigo }}">
+    </div>
+    <div class="form-group">
+      <label for="cod_um_as400">Código UM AS400:</label>
+      <input type="text" class="form-control" id="cod_um_as400" name="cod_um_as400" value="{{ unidadmd.cod_um_as400 }}">
+    </div>
+    <div class="form-group">
+      <label for="cod_esigef">Código ESIGEF:</label>
+      <input type="text" class="form-control" id="cod_esigef" name="cod_esigef" value="{{ unidadmd.cod_esigef }}">
+    </div>
+    <div class="form-group">
+      <label for="cod_crp">Código CRP:</label>
+      <input type="text" class="form-control" id="cod_crp" name="cod_crp" value="{{ unidadmd.cod_crp }}">
+    </div>
+    <div class="form-group">
+      <label for="nombre_unidad">Nombre de la Unidad:</label>
+      <input type="text" class="form-control" id="nombre_unidad" name="nombre_unidad" value="{{ unidadmd.nombre_unidad }}">
+    </div>
+    <div class="form-group">
+      <label for="nom_corto_unidad">Nombre Corto de la Unidad:</label>
+      <input type="text" class="form-control" id="nom_corto_unidad" name="nom_corto_unidad" value="{{ unidadmd.nom_corto_unidad }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Nivel de Atención:</label>
+      <input type="text" class="form-control" id="nivel_atencion" name="nivel_atencion" value="{{ unidadmd.nivel_atencion }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Tipología Homo:</label>
+      <input type="text" class="form-control" id="tipologia_homo" name="tipologia_homo" value="{{ unidadmd.tipologia_homo }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Complejidad:</label>
+      <input type="text" class="form-control" id="complejidad" name="complejidad" value="{{ unidadmd.complejidad }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Categoría del Establecimiento:</label>
+      <input type="text" class="form-control" id="categ_establecimiento" name="categ_establecimiento" value="{{ unidadmd.categ_establecimiento }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Coordinador Provincial:</label>
+      <input type="text" class="form-control" id="coord_provincial" name="coord_provincial" value="{{ unidadmd.coord_provincial }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Provincia:</label>
+      <input type="text" class="form-control" id="provincia" name="provincia" value="{{ unidadmd.provincia }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Código de Provincia:</label>
+      <input type="text" class="form-control" id="cod_prov" name="cod_prov" value="{{ unidadmd.cod_prov }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Cantón:</label>
+      <input type="text" class="form-control" id="canton" name="canton" value="{{ unidadmd.canton }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Código de Cantón:</label>
+      <input type="text" class="form-control" id="cod_cant" name="cod_cant" value="{{ unidadmd.cod_cant }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Parroquia:</label>
+      <input type="text" class="form-control" id="parroquia" name="parroquia" value="{{ unidadmd.parroquia }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Código de Parroquia:</label>
+      <input type="text" class="form-control" id="cod_parroquia" name="cod_parroquia" value="{{ unidadmd.cod_parroquia }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Zona:</label>
+      <input type="text" class="form-control" id="zona" name="zona" value="{{ unidadmd.zona }}">
+    </div>
+    <div class="form-group">
+      <label for="nivel_atencion">Distrito:</label>
+      <input type="text" class="form-control" id="distrito" name="distrito" value="{{ unidadmd.distrito }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <a href="{% url 'mostrar_unidadesmd' %}" class="btn btn-secondary">Volver</a>
+  </form>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Detalles de Matriz Medicamentos
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+  <h2>Detalles de Matriz Medicamentos - {{ matriz.udm_id.nombre_unidad }}</h2>
+  
+  <table class="table table-bordered">
+      <tbody>
+          <tr>
+              <th>Versión</th>
+              <td>{{ matriz.version }}</td>
+          </tr>
+          <tr>
+              <th>Matrix</th>
+              <td>{{ matriz.matrix }}</td>
+          </tr>
+          <tr>
+              <th>Item Nro</th>
+              <td>{{ matriz.item_nro }}</td>
+          </tr>
+          <!-- Agregar más filas para cada uno de los campos de la matriz -->
+          <!-- Ejemplo: -->
+          <tr>
+              <th>Nom Subcomite</th>
+              <td>{{ matriz.nom_subcomite }}</td>
+          </tr>
+          <!-- ... y así sucesivamente para cada campo -->
+      </tbody>
+  </table>
+  
+  <a href="{% url 'mostrar_matriz_medicamentos' %}" class="btn btn-secondary">Volver</a>
+  <a href="{% url 'editar_matriz_dispositivo_view' matriz.id %}">Editar Matriz Dispositivo</a>
+{% endblock %}

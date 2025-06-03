@@ -1,0 +1,52 @@
+{% extends 'baselogin.html' %} {% block content %}
+<h2>Autenticación</h2>
+<form method="post">
+  {% csrf_token %}
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input
+      type="username"
+      id="form3Example3"
+      class="form-control form-control-lg"
+      placeholder="Ingresa un usuario válido"
+      name="{{ form.username.name }}"
+      value="{{ form.username.value|default:'' }}"
+    />
+    <label class="form-label" for="form3Example3">Usuario</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-3">
+    <input
+      type="password"
+      id="form3Example4"
+      class="form-control form-control-lg"
+      placeholder="Ingresa tu contraseña"
+      name="{{ form.password.name }}"
+    />
+    <label class="form-label" for="form3Example4">Contraseña</label>
+  </div>
+
+  <!-- Error messages -->
+  {% if form.username.errors %}
+  <div class="alert alert-danger" role="alert">
+    {{ form.username.errors.as_text }}
+  </div>
+  {% endif %} {% if form.password.errors %}
+  <div class="alert alert-danger" role="alert">
+    {{ form.password.errors.as_text }}
+  </div>
+  {% endif %}
+
+  <div class="text-center text-lg-start mt-4 pt-2">
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      style="padding-left: 2.5rem; padding-right: 2.5rem"
+    >
+      Ingresar
+    </button>
+  </div>
+</form>
+{% endblock %}

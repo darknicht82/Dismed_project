@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Editar Departamento</h1>
+  <form action="{{ editar_url }}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="nombredept">Nombre Departamento:</label>
+      <input type="text" name="nombredept" id="nombredept" value="{{ departamento.nombredept }}" class="form-control" required>
+      <div class="invalid-feedback">
+        Por favor ingresa el nombre del departamento.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <a href="{% url 'departamentos' %}" class="btn btn-secondary">Volver</a>
+  </form>
+{% endblock %}

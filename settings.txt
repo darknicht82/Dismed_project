@@ -1,0 +1,56 @@
+Configurar tu servidor web para servir archivos media directamente implica ajustar la configuración de tu servidor
+ (ya sea Nginx, Apache u otro) para que identifique las peticiones que van destinadas a archivos media y las sirva 
+ directamente desde el directorio donde se encuentran.
+
+1. Configuración para Nginx:
+
+Supongamos que has configurado MEDIA_URL como '/media/' y MEDIA_ROOT como '/path/to/your/media/directory' en Django. 
+La configuración de Nginx sería:
+
+server {
+    #... otras configuraciones de tu servidor ...
+
+    location /media/ {
+        alias /path/to/your/media/directory/;
+        expires 30d;  # Configuración para que el navegador guarde en caché los archivos durante 30 días.
+        add_header Cache-Control "public, max-age=2592000";
+    }
+}
+
+
+2. Configuración para Apache:
+
+Primero, asegúrate de tener el módulo mod_alias habilitado. Luego, puedes usar la directiva Alias en tu 
+configuración:
+
+<VirtualHost *:80>
+    # ... otras configuraciones de tu servidor ...
+
+    Alias /media/ /path/to/your/media/directory/
+    <Directory /path/to/your/media/directory/>
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+
+Para ejecutar el script, guárdelo en un archivo con la extensión .sh, por ejemplo, exportar.sh, y otorgue permisos de ejecución:
+
+bash
+Copy code
+chmod +x exportar.sh
+Luego, ejecútelo con:
+
+bash
+Copy code
+./exportar.sh
+
+Para utilizar este script, guárdelo en un archivo con la extensión .sh, por ejemplo, importar.sh. Luego, otorgue permisos de ejecución al script con el siguiente comando:
+
+bash
+Copy code
+chmod +x importar.sh
+Finalmente, ejecute el script con:
+
+bash
+Copy code
+./importar.sh
